@@ -1,24 +1,24 @@
 #include "matrix.hpp"
 
-Matrix::Matrix(int32_t rows, int32_t cols) 
+Matrix::Matrix(size_t rows, size_t cols) 
     :   rows_(rows),
         cols_(cols),
         data_(rows * cols, 0)
 {
 }
 
-Matrix::int32_t& operator()(size_t row, size_t col) {
-    return data_(rows * cols + cols);
+int32_t& Matrix::operator()(size_t row, size_t col) {
+    return data_[row * cols_ + col];
 }
 
-Matrix::int32_t operator()(size_t row, size_t col) const {
-    return data_(rows * cols + cols);
+int32_t Matrix::operator()(size_t row, size_t col) const {
+    return data_[row * cols_ + col];
 }
 
-Matrix::size_t rows() const {
+size_t Matrix::rows() const {
     return rows_;
 }
 
-Matrix::size_t cols() const {
-    return cols;
+size_t Matrix::cols() const {
+    return cols_;
 }
